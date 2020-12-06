@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :dish do
     user
-    sequence(:name) { |n| "test#{n}_dish"}
+    name { Faker::Food.unique.dish }
+    details { Faker::Food.description }
   end
 end
