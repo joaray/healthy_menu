@@ -4,7 +4,7 @@ feature 'Menu management' do
 
   let(:user) { create(:user) }
   let(:dish) { create(:dish) }
-  let(:menu_item) {create(:menu_item)}
+  let(:menu_item) { create(:menu_item) }
 
   context 'for logged user' do
     before :each do
@@ -16,7 +16,7 @@ feature 'Menu management' do
         @dish = create(:dish, user: user)
       end
 
-      scenario 'adds new item to menu' do
+      scenario 'adds a new item to menu' do
         visit dish_path(@dish)
         expect {
           click_link 'Add to MENU'
@@ -72,17 +72,12 @@ feature 'Menu management' do
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
+  end
 
   context 'for logged out user' do
-    before :each do
-      dish
-      logout
-    end
-
     scenario 'does not show menu' do
       visit menu_path
       expect(page).to have_content 'You need to sign in or sign up before continuing.'
     end
   end
- end
 end

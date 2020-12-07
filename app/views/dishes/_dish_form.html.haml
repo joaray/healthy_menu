@@ -1,9 +1,15 @@
 = form_for [@dish] do |dish|
   %h4= dish.label :name
   %h4= dish.text_field :name
-  %h4= dish.label :details
-  %h4= dish.text_area :details
+  %h4= dish.label :description
+  %h4= dish.text_area :description
   %h4= dish.label :public
   %h4= dish.check_box :public
+  %h4= dish.label :prep_time
+  %h4= dish.number_field :prep_time
+  %h4= dish.label :cook_time
+  %h4= dish.number_field :cook_time
+  %h4= dish.label :servings
+  %h4= dish.number_field :servings
   = dish.submit 'Submit'
   = link_to "Cancel", dishes_path

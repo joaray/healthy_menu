@@ -11,10 +11,12 @@ users_quantity = User.count
   FactoryGirl.create(:user)
 end
 
+times = [10, 20, 30]
+
 User.first(5).each do |user|
   dishes_quantity = user.dishes.count
   (10 - dishes_quantity).times do
-    dish = FactoryGirl.create(:dish, user: user)
+    dish = FactoryGirl.create(:dish, user: user, prep_time: times.sample, cook_time: times.sample, servings: 4)
     FactoryGirl.create(:menu_item, user: user, dish: dish, day: MenuItem::DAYS.sample, meal: MenuItem::MEALS.sample)
   end
 end

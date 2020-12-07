@@ -43,11 +43,15 @@ class DishesController < ApplicationController
   end
 
   def clone
+    # TODO: refactor
     @dish = Dish.new(
       user: current_user,
       name: "#{@dish.name} of #{current_user.nick}",
-      details: @dish.details,
-      public: false
+      description: @dish.description,
+      public: false,
+      prep_time: @dish.prep_time,
+      cook_time: @dish.cook_time,
+      servings: @dish.servings
     )
     if @dish.save
       redirect_to dish_path(@dish), notice: 'Dish has been cloned'
@@ -60,7 +64,7 @@ class DishesController < ApplicationController
   private
 
   def check_params
-    params.require(:dish).permit(:name, :details, :public)
+    params.require(:dish).permit(:name, :description, :public, :prep_time, :cook_time, :servings)
   end
 
   def set_visible_dishes

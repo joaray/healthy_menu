@@ -15,7 +15,10 @@ feature 'Dish management' do
       expect {
         click_link 'New dish'
         fill_in 'Name', with: 'test_dish'
-        fill_in 'Details', with: 'very easy dish'
+        fill_in 'Description', with: 'very easy dish'
+        fill_in 'Prep time', with: 20
+        fill_in 'Cook time', with: 10
+        fill_in 'Servings', with: 4
         click_button 'Submit'
       }.to change(Dish, :count).by(1)
       expect(page).to have_content 'test_dish'

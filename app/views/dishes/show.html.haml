@@ -6,8 +6,7 @@
         %h2= @dish.name
         .element
           %h4 added by #{@dish.user.nick}
-          - if @dish.details.present?
-            %h4= @dish.details
+          %h4= @dish.description
           = link_to 'Clone', clone_dish_path, method: :post
           - if @dish.user == current_user
             = link_to 'Edit dish', edit_dish_path

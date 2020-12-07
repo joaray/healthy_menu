@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_073938) do
+ActiveRecord::Schema.define(version: 2020_12_07_081925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,25 @@ ActiveRecord::Schema.define(version: 2019_05_11_073938) do
   create_table "dishes", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
-    t.string "details"
+    t.string "description"
     t.boolean "public", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prep_time", null: false
+    t.integer "cook_time", null: false
+    t.integer "servings", null: false
     t.index ["user_id"], name: "index_dishes_on_user_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "dish_id", null: false
+    t.integer "unit", null: false
+    t.decimal "quantity", precision: 8, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dish_id"], name: "index_ingredients_on_dish_id"
+    t.index ["product_id"], name: "index_ingredients_on_product_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -34,6 +48,12 @@ ActiveRecord::Schema.define(version: 2019_05_11_073938) do
     t.datetime "updated_at", null: false
     t.index ["dish_id"], name: "index_menu_items_on_dish_id"
     t.index ["user_id"], name: "index_menu_items_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_05_11_073938) do
   end
 
   add_foreign_key "dishes", "users"
+  add_foreign_key "ingredients", "dishes"
+  add_foreign_key "ingredients", "products"
   add_foreign_key "menu_items", "dishes"
   add_foreign_key "menu_items", "users"
 end
