@@ -9,6 +9,17 @@ AllCops:
     - '**/vendor/**/*'
     - '**/vendor/bundle/**/*'
 
+Style/Documentation:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
   AutoCorrect: true
+
+Style/RedundantFetchBlock:
+  Exclude:
+    - 'config/puma.rb'
+
+Style/GlobalStdStream:
+  Exclude:
+    - 'config/environments/production.rb'
