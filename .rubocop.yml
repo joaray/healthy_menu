@@ -9,3 +9,6 @@ AllCops:
     - '**/vendor/**/*'
     - '**/vendor/bundle/**/*'
 
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+  AutoCorrect: true
