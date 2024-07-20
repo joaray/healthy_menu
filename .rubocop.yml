@@ -1,0 +1,29 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - '.git/**/*'
+    - '**/bin/*'
+    - '**/bin/**/*'
+    - '**/db/schema.rb'
+    - '**/tmp/**/*'
+    - '**/vendor/**/*'
+    - '**/vendor/bundle/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/development.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+  AutoCorrect: true
+
+Style/RedundantFetchBlock:
+  Exclude:
+    - 'config/puma.rb'
+
+Style/GlobalStdStream:
+  Exclude:
+    - 'config/environments/production.rb'
