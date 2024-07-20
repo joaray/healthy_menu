@@ -9,6 +9,10 @@ AllCops:
     - '**/vendor/**/*'
     - '**/vendor/bundle/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/development.rb'
+
 Style/Documentation:
   Enabled: false
 
