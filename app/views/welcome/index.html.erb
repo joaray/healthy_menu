@@ -1,4 +1,8 @@
 WELCOME
-<%= link_to 'Login', new_user_session_path %>
-<%= button_to 'Logout', destroy_user_session_path, method: :delete %>
 
+<% if current_user %>
+  <%= current_user.email %>
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= button_to "Sign in with Google", omniauth_authorize_path(User, :google), data: { turbo: false } %>
+<% end %>
