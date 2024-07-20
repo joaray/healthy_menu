@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check
 
-  root "welcome#index"
-  devise_for :users
+  root 'welcome#index'
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_scope :user do
+    get 'admin' => 'devise/sessions#new'
+  end
 end
