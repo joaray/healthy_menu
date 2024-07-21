@@ -1,9 +1,5 @@
-<div class="container m-5 d-flex flex-column align-items-center">
-  WELCOME
-  <% if current_user %>
-    <%= current_user.email %>
-    <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-danger m-2" %>
-  <% else %>
+<div class="m-5 d-flex flex-column align-items-center">
+  <% unless current_user %>
     <%= button_to "Sign in with Google", omniauth_authorize_path(User, :google), data: { turbo: false }, class: "btn btn-primary m-2" %>
   <% end %>
 </div>
