@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :timeoutable, :omniauthable, omniauth_providers: [:google]
 
+  has_many :dishes, dependent: :nullify
+
   def self.from_omniauth(access_token)
     data = access_token.info
     email = data['email']

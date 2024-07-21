@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'admin' => 'devise/sessions#new'
   end
+
+  resources :dishes do
+    member do
+      patch :toggle_public
+    end
+  end
 end
