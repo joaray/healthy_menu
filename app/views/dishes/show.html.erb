@@ -1,0 +1,4 @@
+<h1><%= @dish.name %></h1>
+
+<div><%= simple_format @dish.details.html_safe %></div>
+<td><%= render "links", dish: @dish, tag_type: :div %></td>

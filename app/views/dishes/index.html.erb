@@ -1,0 +1,17 @@
+<h1>Dishes</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dishes.each do |dish| %>
+      <tr>
+        <td><%= link_to dish.name, dish %></td>
+        <%= render "links", dish: dish, tag_type: :td %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

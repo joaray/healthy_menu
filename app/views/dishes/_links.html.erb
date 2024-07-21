@@ -1,0 +1,7 @@
+<%= content_tag(tag_type, class: "d-flex gap-3") do %>
+  <%= link_to "Edit", edit_dish_path(dish), class: "btn btn-primary" %>
+  <%= button_to "Destroy", dish, method: :delete, class: "btn btn-primary" %>
+  <%= button_to dish.button_text, toggle_public_dish_path(dish), method: :patch, class: "btn btn-#{dish.css_class}" %>
+<% end %>
+
+
