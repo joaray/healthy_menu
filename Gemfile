@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '3.2.4'
 
 gem 'bootsnap', require: false
+gem "bootstrap"
 gem 'devise'
 gem 'importmap-rails'
 gem 'jbuilder'
@@ -15,6 +16,7 @@ gem 'rubocop', require: false
 gem 'rubocop-performance', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
+gem "sassc-rails"
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
