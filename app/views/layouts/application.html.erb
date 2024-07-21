@@ -12,7 +12,8 @@
 
   <body>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% flash.each do |name, msg| %>
+      <p class="container alert <%= "hm-#{name}" %>"><%= msg %></p>
+    <% end %>
   </body>
 </html>
